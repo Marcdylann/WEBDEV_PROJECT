@@ -1,10 +1,6 @@
-// NEW POST VARIABLE ==============================================================================
 const postInput = document.querySelector(".post-input");
 const post = document.querySelector(".post-container");
 const postPar = document.querySelector(".post-par");
-
-
-// TO POST WHEN CLICK ENTER =================================================================================
 postInput.addEventListener("keypress", function(event){
 
     if (event.key === "Enter"){
@@ -15,7 +11,7 @@ postInput.addEventListener("keypress", function(event){
         <div class="news-header flex-row paragraph-box">
             <div class="flex-row">
                 <div class="news-dp">
-                    <img src="images/robin.png" alt="">
+                    <img src="images/marc.png" alt="">
                 </div>
                 <div class="dp-name">
                     <p><strong>Marc Dylan Pilapil</strong></p>
@@ -148,18 +144,6 @@ setTimeout(() =>{
 // 9620
 // ================================================================================================
 
-
-// DELETES FRIEND REQUEST =========================================================================
-let friend = document.querySelector(".div-friend");
-
-function del(){
-    friend.style.display = 'none';
-}
-// =================================================================================================
-
-
-
-
 // CHANGE OVERFLOWING TEXT IN SMALLER DEVICES=======================================================
 let photo = document.getElementById("photo");
 var mq = window.matchMedia('(max-width: 700px)');
@@ -167,7 +151,7 @@ var mq = window.matchMedia('(max-width: 700px)');
 function render(e){
     if (e.matches){
         photo.innerText = "Photo";
-        postInput.placeholder = "Whats on your mind?";
+        postInput.placeholder = "Whats on your mind Marc?";
         profNav.classList.remove('block')
         for(j = 0; j < dotMenu.length; j++){
             dotMenu[j].classList.remove('active') 
@@ -175,7 +159,7 @@ function render(e){
     }
     else{
         photo.textContent = "Photo/Video";
-        postInput.placeholder = "Whats on your mind? Robin";
+        postInput.placeholder = "Whats on your mind? Marc";
     }
 }
 render(mq);
@@ -287,4 +271,36 @@ window.addEventListener('scroll', function(){
 // =================================================================================================
 
 
+// Get elements
+const signoutImage = document.getElementById('signoutImage');
+const signoutPopup = document.getElementById('signoutPopup');
+const confirmSignOut = document.getElementById('confirmSignOut');
+const cancelSignOut = document.getElementById('cancelSignOut');
+const popupOverlay = document.createElement('div');
 
+// Create and style overlay
+popupOverlay.className = 'popup-overlay';
+document.body.appendChild(popupOverlay);
+
+// Show the popup when image is clicked
+signoutImage.addEventListener('click', () => {
+    signoutPopup.style.display = 'block';
+    popupOverlay.style.display = 'block';
+});
+
+// Hide the popup when cancel button is clicked
+cancelSignOut.addEventListener('click', () => {
+    signoutPopup.style.display = 'none';
+    popupOverlay.style.display = 'none';
+});
+
+// Redirect to index.php when confirm button is clicked
+confirmSignOut.addEventListener('click', () => {
+    window.location.href = 'index.php';
+});
+
+// Hide the popup when clicking outside of it
+popupOverlay.addEventListener('click', () => {
+    signoutPopup.style.display = 'none';
+    popupOverlay.style.display = 'none';
+});
