@@ -20,7 +20,7 @@ include 'Database/connection.php';
     <script src="main.js" defer></script>
 </head>
 <body>
-<!-- <section class="flex-column loading"> -->
+<section class="flex-column loading">
 
 <img src="loading.gif" alt="">
 <div class="meta">
@@ -268,9 +268,7 @@ include 'Database/connection.php';
                     <?php
 
                     if (isset($_POST["submit_post"])) {
-                        echo '<script>alert("Test1!")</script>';
                         $postContent = mysqli_real_escape_string($conn, $_POST['post_content']);
-                        echo '<script>alert("Test2!")</script>';
 
                         // Assuming you have the user information stored in session
                         $userId = $_SESSION['user_id'];
@@ -278,16 +276,10 @@ include 'Database/connection.php';
                         // Get current date and time
                         $date = date('Y-m-d');
                         $time = date('H:i:s');
-
-                        echo '<script>alert("Test3!")</script>';
-
                         $sqlInsert = "INSERT INTO post_info (date, time, text) VALUES ('$date', '$time', '$postContent')";
-                        echo '<script>alert("Test4!")</script>';
                         if (mysqli_query($conn, $sqlInsert)) {
-                            echo '<script>alert("Test5!")</script>';
                             echo '<script>alert("Post submitted successfully!"); window.location.href = "main.php";</script>';
                         } else {
-                            echo '<script>alert("Test6!")</script>';
                             echo '<script>alert("Error: Could not submit post. Please try again."); window.location.href = "index.php";</script>';
                         }
                     }
